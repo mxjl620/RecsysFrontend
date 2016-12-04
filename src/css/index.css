@@ -1,0 +1,32 @@
+@font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Lato Regular'), local('Lato-Regular'), url(http://fonts.gstatic.com/s/lato/v11/v0SdcGFAl2aezM9Vq_aFTQ.ttf) format('truetype');
+}
+.table-head {
+    background-color: #EAF3FA;
+}
+a {
+    cursor: pointer;
+}
+
+.modal-header{
+    background-color: #4697ce;
+    color: #fff;
+    border-radius: 2px;
+}
+.close {
+    color: #fff;
+}
+.table-link {
+    margin-right: 10px;
+    padding-right: 10px;
+    border-right: 1px solid #b2b2b2;
+}
+.row-offset-right {
+    padding-left: 15px;
+}
+.file-upload {
+    padding-top: 6px;
+}
