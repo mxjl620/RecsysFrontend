@@ -1,0 +1,135 @@
+<div ng-controller="applicationController">
+    <div class="wrapper row-offcanvas row-offcanvas-left">
+        <!-- Left side column. contains the logo and sidebar -->
+        <aside class="left-side sidebar-offcanvas">
+            <!-- sidebar: style can be found in sidebar.less -->
+            <section class="sidebar">
+                <!-- Sidebar user panel -->
+                <div class="user-panel">
+                    <div class="pull-left image">
+                        <img src="3rdParty/img/12.jpg" class="img-circle" alt="User Image"/>
+                    </div>
+                    <div class="pull-left info">
+                        <p>Hello, anrui</p>
+                    </div>
+                </div>
+                <!-- sidebar menu: : style can be found in sidebar.less -->
+                <ul class="sidebar-menu">
+                    <li class="active">
+                        <a href="#/">
+                            <i class="fa fa-list"></i> <span>我的应用</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-user"></i> <span>账号管理</span>
+                        </a>
+                    </li>
+                </ul>
+            </section>
+            <!-- /.sidebar -->
+        </aside>
+
+        <aside class="right-side">
+            <section class="content">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="panel">
+                            <header class="panel-heading">
+                                <i class="fa fa-th-list"></i>&nbsp;
+                                推荐应用列表</header>
+                            <div class="panel-body table-responsive">
+                                <div class="box-tools m-b-15 pull-right">
+                                    <a class="btn btn-primary btn-addon btn-sm" data-toggle="modal" href="#myModal">
+                                        <i class="fa fa-plus"></i>
+                                        添加新应用
+                                    </a>
+                                </div>
+                                <table class="table">
+                                    <colgroup span="6">
+                                        <col width="6%" align="left">
+                                        <col width="15%" align="center">
+                                        <col width="20%" align="center">
+                                        <col width="15%" align="center">
+                                        <col width="15%" align="center">
+                                        <col width="20%" align="center">
+                                    </colgroup>
+                                    <tr class="table-head">
+                                        <th>ID</th>
+                                        <th>应用名称</th>
+                                        <th>描述</th>
+                                        <th>邮箱</th>
+                                        <th>产品线</th>
+                                        <th>操作</th>
+                                    </tr>
+                                    <tr ng-repeat="application in applications">
+                                        <td ng-bind="$index+1"></td>
+                                        <td ng-bind="application.appid" ng-hide="true"></td>
+                                        <td ng-bind="application.appName"></td>
+                                        <td ng-bind="application.appDesc"></td>
+                                        <td ng-bind="application.email"></td>
+                                        <td ng-bind="application.productDesc"></td>
+                                        <td>
+                                            <a ng-click="goToDataFile(application)" class="table-link">数据管理</a>
+                                            <a class="table-link">服务管理</a>
+                                            <a ng-click="remove(application)">删除</a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </aside>
+
+    </div>
+
+    <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade" ng-model="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                    <h4 class="modal-title">
+                        <i class="fa fa-plus"></i>&nbsp;&nbsp;
+                        添加新应用</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label class="col-lg-2 col-sm-2 control-label">应用名称</label>
+                            <div class="col-lg-10">
+                                <input class="form-control" ng-model="currentApplication.appName" placeholder="请输入应用名称" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 col-sm-2 control-label">描述</label>
+                            <div class="col-lg-10">
+                                <textarea class="form-control" ng-model="currentApplication.appDesc" rows="3" placeholder="请输入应用描述"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 col-sm-2 control-label">邮箱</label>
+                            <div class="col-lg-10">
+                                <input class="form-control" type="email" ng-model="currentApplication.email" placeholder="请输入联系人邮箱" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 col-sm-2 control-label">产品线</label>
+                            <div class="col-lg-10">
+                                <input class="form-control" ng-model="currentApplication.productDesc" placeholder="请输入产品线">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-9">
+                                <button ng-click="addApplication()" class="btn btn-primary">确定</button>&nbsp;&nbsp;
+                                <button data-dismiss="modal" class="btn btn-default" type="button">取消</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

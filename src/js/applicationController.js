@@ -1,9 +1,7 @@
-var app = angular.module('app', ['ngRoute']);
-
 (function () {
     'use strict';
 
-    app.controller('MainController', function ($scope, $http) {
+    app.controller('applicationController', function ($scope, $http, $location) {
 
         $scope.currentApplication = {};
 
@@ -62,6 +60,10 @@ var app = angular.module('app', ['ngRoute']);
             $scope.currentApplication.appDesc = '';
             $scope.currentApplication.email = '';
             $scope.currentApplication.productDesc = '';
+        };
+
+        $scope.goToDataFile = function (application) {
+          $location.path('/data');
         };
 
         $scope.refreshAppList();
