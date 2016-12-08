@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    app.controller('applicationController', function ($scope, $http, $location) {
+    app.controller('applicationController', function ($scope, $http, $location, myService) {
 
         $scope.currentApplication = {};
 
@@ -63,7 +63,8 @@
         };
 
         $scope.goToDataFile = function (application) {
-          $location.path('/data');
+            myService.setApplication(application);
+            $location.path('/data');
         };
 
         $scope.refreshAppList();

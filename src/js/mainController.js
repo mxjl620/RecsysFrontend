@@ -20,4 +20,17 @@ app.config(function ($routeProvider) {
         });
 });
 
+app.service('myService', function () {
+   var application = {};
+
+    return {
+        getApplication: function () {
+            return application;
+        },
+        setApplication: function(value) {
+            application = angular.copy(value);
+        }
+    };
+});
+
 app.controller('mainController', function($scope) {});
