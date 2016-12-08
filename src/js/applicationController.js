@@ -30,6 +30,14 @@
                 }
             }).then(function (response) {
                 $scope.refreshAppList();
+                getFileList(application.appid).then(function (data) {
+                    var fileList = data.data.data;
+                    for (var i = 0; i < fileList.length; i++) {
+                        deleteFile(application.appid, fileList[i].id);
+                    }
+                }, function (err) {
+                    console.log('error');
+                })
             },function (response) {
                 console.log('error')
             })
@@ -53,6 +61,27 @@
           },function (response) {
               console.log('error');
           })
+        };
+
+        var getFileList = function (appid) {
+            return $http({
+                url: 'v1/dataManagement/listDataFile',
+                method: 'POST',
+                data: {
+                    'appid': appid
+                }
+            })
+        };
+
+        var deleteFile = function (appid, fileid) {
+            return $http({
+                url: 'v1/dataManagement/delDataFile',
+                method: 'POST',
+                data: {
+                    'appid': appid,
+                    'dataid': fileid
+                }
+            })
         };
 
         var resetModalForm = function () {
